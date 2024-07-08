@@ -1,0 +1,50 @@
+﻿@model dynamic
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    @if (Model is IEnumerable<string>)
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    }
+    else if (Model is IEnumerable<int>)
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    }
+    else if (Model is IEnumerable<LinqExercises.Models.NumberSquare>)
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item.Number - @item.Square</li>
+            }
+        </ul>
+    }
+    else if (Model is char)
+    {
+        <p>Most frequent character: @Model</p>
+    }
+    else if (Model is string)
+    {
+        <p>@Model</p>
+    }
+    else
+    {
+        <p>No results found.</p>
+    }
+</body>
+</html>
